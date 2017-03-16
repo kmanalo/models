@@ -51,7 +51,13 @@ import cifar10
 
 FLAGS = tf.app.flags.FLAGS
 
-tf.app.flags.DEFINE_string('train_dir', '/tmp/cifar10_train',
+# localize event log and checkpoint directory to TMPDIR
+import os
+directory = os.getenv('TMPDIR') + '/' + 'cifar10_data'
+if not os.path.exists(directory):
+    os.makedirs(directory)
+    
+tf.app.flags.DEFINE_string('train_dir', directory,
                            """Directory where to write event logs """
                            """and checkpoint.""")
 tf.app.flags.DEFINE_integer('max_steps', 1000000,
