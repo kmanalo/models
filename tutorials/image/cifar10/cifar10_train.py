@@ -45,9 +45,9 @@ import cifar10
 
 FLAGS = tf.app.flags.FLAGS
 
-# localize event log and checkpoint directory to PWD
+# localize event log and checkpoint directory to TMPDIR
 import os
-directory = os.getenv('PWD') + '/' + 'cifar10_train'
+directory = os.getenv('TMPDIR') + '/' + 'cifar10_data'
 if not os.path.exists(directory):
     os.makedirs(directory)
     
